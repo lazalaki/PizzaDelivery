@@ -1,0 +1,8 @@
+{
+    "onboarding": {
+        "emailPlaceholder": "Enter Your Email",
+        "passwordPlaceholder": "Enter Your Password",
+        "firstNamePlaceholder": "Enter Your First Name",
+        "lastNamePlaceholder": "Enter Your Last Name"        
+    }
+}
