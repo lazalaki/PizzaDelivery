@@ -8,6 +8,8 @@ import { Button } from 'primereact/button'
 import { firstNamePlaceholder, lastNamePlaceholder, emailPlaceholder, passwordPlaceholder } from '../onboardingTranslation';
 import { registerRequest } from '../../../services/auth/auth';
 import { loginRoute } from '../../../shared/routes/routes';
+import { registerFormValidation } from './registerFormValidation'
+import './register.css'
 
 
 const Register = ({history}) => {
@@ -20,7 +22,8 @@ const Register = ({history}) => {
             lastName: '',
             email: '',
             password: ''
-        }
+        },
+        validationSchema: registerFormValidation()
 
     })
 
@@ -36,38 +39,46 @@ const Register = ({history}) => {
     }
 
     return(
-        <div>
-            <Input 
-                label={translate(firstNamePlaceholder)} 
-                name={'firstName'} 
-                onChange={formik.handleChange} 
-                value={formik.values.firstName} 
-            />
+        <div className={'container'}>
+            <div className={'form'}>
+                <Input 
+                    label={translate(firstNamePlaceholder)} 
+                    name={'firstName'} 
+                    onChange={formik.handleChange} 
+                    value={formik.values.firstName}
+                    formik={formik}
+                />
 
-            <Input 
-                label={translate(lastNamePlaceholder)}
-                name={'lastName'}
-                onChange={formik.handleChange}
-                value={formik.values.lastName} 
-            />
+                <Input 
+                    label={translate(lastNamePlaceholder)}
+                    name={'lastName'}
+                    onChange={formik.handleChange}
+                    value={formik.values.lastName}
+                    formik={formik} 
+                />
 
-            <Input 
-                label={translate(emailPlaceholder)}
-                name={'email'}
-                type={'email'}
-                onChange={formik.handleChange}
-                value={formik.values.email}
-            />
+                <Input 
+                    label={translate(emailPlaceholder)}
+                    name={'email'}
+                    type={'email'}
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    formik={formik}
+                />
 
-            <Input 
-                label={translate(passwordPlaceholder)}
-                name={'password'}
-                type={'password'}
-                onChange={formik.handleChange}
-                value={formik.values.password}
-            />
+                <Input 
+                    label={translate(passwordPlaceholder)}
+                    name={'password'}
+                    type={'password'}
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    formik={formik}
+                />
 
-            <Button label="Submit" className="p-button-rounded" onClick={onSubmitHandler} />
+                <Button label="Submit" disabled={!(formik.isValid && formik.dirty)} className="p-button-rounded" onClick={onSubmitHandler} />
+                <a href={loginRoute()}>Go to login?</a>
+            </div>
+            
         </div>
     )
 }

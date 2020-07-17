@@ -7,14 +7,15 @@ import Input from '../../../componets/input/input';
 import { emailPlaceholder, passwordPlaceholder } from '../onboardingTranslation';
 import { loginRequest } from '../../../services/auth/auth';
 import { Button } from 'primereact/button';
-import { dashboardRoute } from '../../../shared/routes/routes';
+import { dashboardRoute, registerRoute } from '../../../shared/routes/routes';
 import { GlobalStore} from '../../../stores/global-store/global-store';
 import { loginFormValidation } from './loginFromValidation';
+
+import './login.css';
 
 const Login = ({history}) => {
     const { t: translate } = useTranslation();
 
-    // const globalStore = useContext(Glob)
     const {setUser} = useContext(GlobalStore);
     const formik = useFormik({
         initialValues: {
@@ -26,10 +27,8 @@ const Login = ({history}) => {
 
     const onSubmitHandler = async () => {
         try {
-            const {data} = await loginRequest(formik.values)
-        
+            const {data} = await loginRequest(formik.values)        
             setUser(data.user)
-
             history.push(dashboardRoute())
         } catch(error) {
             console.log(error)
@@ -37,23 +36,28 @@ const Login = ({history}) => {
     }
 
     return(
-        <div>
-            <Input
-                name={'email'}
-                label={translate(emailPlaceholder)}
-                onChange={formik.handleChange}
-                value={formik.values.email}
-                formik={formik}
-            />
-            <Input 
-                type={'password'} 
-                name={"password"} 
-                onChange={formik.handleChange} 
-                value={formik.values.password}
-                label={translate(passwordPlaceholder)}
-                formik={formik}
-            />
-            <Button label="Submit" disabled={!(formik.isValid && formik.dirty)} className="p-button-rounded" onClick={onSubmitHandler} />   
+        <div className={'container'}>
+            <div className={'form'}>
+                <Input
+                    name={'email'}
+                    label={translate(emailPlaceholder)}
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    formik={formik}
+                    className={'input'}
+                />
+                <Input 
+                    type={'password'} 
+                    name={"password"} 
+                    onChange={formik.handleChange} 
+                    value={formik.values.password}
+                    label={translate(passwordPlaceholder)}
+                    formik={formik}
+                    className={'input'}
+                />
+                <Button label="Submit" disabled={!(formik.isValid && formik.dirty)} className="p-button-rounded" onClick={onSubmitHandler} />   
+                <a href={registerRoute()}>Go to register page?</a>
+            </div>
         </div>
     )
 }
