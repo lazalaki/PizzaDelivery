@@ -1,4 +1,4 @@
-import { post } from '../httpServices'
+import { post } from '../../httpServices';
 
 const authServiceBaseUrl = () => '/auth';
 const loginRequestUrl = () => `${authServiceBaseUrl()}/login`;

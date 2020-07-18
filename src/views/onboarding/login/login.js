@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Input from '../../../componets/input/input';
 import { emailPlaceholder, passwordPlaceholder } from '../onboardingTranslation';
-import { loginRequest } from '../../../services/auth/auth';
+import { loginRequest } from '../../../services/api/auth/auth';
 import { Button } from 'primereact/button';
 import { dashboardRoute, registerRoute } from '../../../shared/routes/routes';
 import { GlobalStore} from '../../../stores/global-store/global-store';

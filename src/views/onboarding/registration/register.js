@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import Input from '../../../componets/input/input'
 import { Button } from 'primereact/button'
 import { firstNamePlaceholder, lastNamePlaceholder, emailPlaceholder, passwordPlaceholder } from '../onboardingTranslation';
-import { registerRequest } from '../../../services/auth/auth';
+import { registerRequest } from '../../../services/api/auth/auth';
 import { loginRoute } from '../../../shared/routes/routes';
 import { registerFormValidation } from './registerFormValidation'
 import './register.css'

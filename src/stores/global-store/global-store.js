@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import { globalReducer, initialGlobalState } from "./global-reducer";
-import { setUserAction, setLoggedInAction } from "./global-actions";
+import { setUserAction, setLoggedInAction, setFoodAction } from "./global-actions";
+import { getAllFood } from "../../services/api/food/food";
 
 export const GlobalStore = createContext({});
 
@@ -9,16 +10,16 @@ export const GlobalStoreProvider = ({children}) => {
     const [state, dispatch] = useReducer(globalReducer, initialGlobalState);
 
     useEffect(() => {
-        console.log(1);
         const user = JSON.parse(localStorage.getItem('user'))
-        console.log(user)
         if (user) {
             setUser(user)
         }
+        getFood()
     }, [])
 
+    // exposed
+
     const setUser = (user) => {
-        console.log(user)
         localStorage.setItem('user', JSON.stringify(user));
         setUserAction(user, dispatch)
         setLoggedInAction(true, dispatch)
@@ -26,8 +27,23 @@ export const GlobalStoreProvider = ({children}) => {
 
     const logout = () => {
         localStorage.clear();
-        setUserAction(null);
+        setUserAction(null, dispatch);
         setLoggedInAction(false, dispatch);
+    }
+
+    // private
+
+    const setFood = (food) => {
+        setFoodAction(food, dispatch)
+    }
+
+    const getFood = async () => {
+        try {
+            const {data} = await getAllFood()
+            setFood(data.foods)
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (
