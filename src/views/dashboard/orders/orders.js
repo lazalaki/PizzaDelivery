@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { GlobalStore } from '../../../stores/global-store/global-store';
 import {Card} from 'primereact/card';
@@ -11,7 +11,13 @@ import { CURRENCY_EUR, CURRENCY_DOLLAR } from '../../../stores/global-store/glob
 
 const Orders = () => {
 
-    const {state} = useContext(GlobalStore)
+    const {state, getOrders} = useContext(GlobalStore)
+
+    useEffect(() => {
+        if (state.user && state.user.id) {
+            getOrders()
+        }
+    }, [])
 
     const renderListItem = (order) => {
         return (

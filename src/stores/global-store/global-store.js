@@ -151,7 +151,8 @@ export const GlobalStoreProvider = ({children}) => {
             showError,
             showSuccess,
             clearToast,
-            getCurrentOrder
+            getCurrentOrder,
+            getOrders
         }}>
             {children}
         </GlobalStore.Provider>
