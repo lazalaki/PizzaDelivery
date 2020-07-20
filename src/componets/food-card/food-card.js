@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 import {Card} from 'primereact/card';
 import {Button} from 'primereact/button';
+import { Col, Row } from 'react-grid-system';
+import './food-card.css'
+
+
+
 
 
 const FoodCard = ({singleFood}) => {
@@ -19,9 +24,13 @@ const FoodCard = ({singleFood}) => {
 
     return(
         <>
-            <Card title={singleFood.name} subTitle={`${singleFood.price_eur}EUR`} style={{width: '360px'}} header={header} footer={footer} className="ui-card-shadow">
-                <div>{singleFood.description}</div>
-            </Card>
+            <Row>
+                <Col className={'mg-bottom'}>
+                    <Card title={singleFood.name} subTitle={`${singleFood.price_eur}EUR`} style={{width: '360px'}} header={header} footer={footer} className="ui-card-shadow">
+                        <div>{singleFood.description}</div>
+                    </Card>
+                </Col>
+            </Row>
         </>
     )
 }

@@ -1,29 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { GlobalStore } from '../../../stores/global-store/global-store';
 import FoodCard from '../../../componets/food-card/food-card';
+import { Row, Col } from 'react-grid-system';
 
+import './home.css'
 
 const Home = () => {
 
     const {state} = useContext(GlobalStore);
-
-    const [name, setName] = useState('');
-
-    useEffect(() => {
-        const user = state.user;
-        if (user) {
-            setName(user.first_name);
-        }
-    }, [state.user])
-
     
     return(
         <>
-            Home {name}
-            {state.isLoggedIn ? 'ulogovan' : 'nije'}
-            {state.food.map(singFood => {
-                return <FoodCard singleFood={singFood} key={singFood.id} />
-            })}
+            <Row>
+                {state.food.map(singFood => {
+                    return (
+                    <Col lg={4} md={4} xs={12} sm={12} className={'mg'}>
+                        <FoodCard singleFood={singFood} key={singFood.id} />
+                    </Col>);
+                })}
+            </Row>
         </>
     )
 }

@@ -17,7 +17,7 @@ export const GlobalStoreProvider = ({children}) => {
         getFood()
     }, [])
 
-    // exposed
+    // EXPOSED
 
     const setUser = (user) => {
         localStorage.setItem('user', JSON.stringify(user));
@@ -31,7 +31,7 @@ export const GlobalStoreProvider = ({children}) => {
         setLoggedInAction(false, dispatch);
     }
 
-    // private
+    // PRIVATE
 
     const setFood = (food) => {
         setFoodAction(food, dispatch)

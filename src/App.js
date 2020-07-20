@@ -9,19 +9,22 @@ import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 import {GlobalStoreProvider} from './stores/global-store/global-store';
 import CustomHeader from './componets/navbar/navbar';
+import { Container } from 'react-grid-system';
 
 
 function App() {
   return (
     <div>
-      <GlobalStoreProvider>
-        <CustomHeader />
-      <Switch>
-        <Route path={onboardingRoute()} component={Onboarding} />
-        <Route path={dashboardRoute()} component={Dashboard} />        
-        <Redirect to={onboardingRoute()} />
-      </Switch>
-      </GlobalStoreProvider>
+      <Container>
+        <GlobalStoreProvider>
+          <CustomHeader />
+          <Switch>
+            <Route path={onboardingRoute()} component={Onboarding} />
+            <Route path={dashboardRoute()} component={Dashboard} />        
+            <Redirect to={onboardingRoute()} />
+          </Switch>
+        </GlobalStoreProvider>
+      </Container>
     </div>
   );
 }

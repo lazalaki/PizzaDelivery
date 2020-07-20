@@ -4,20 +4,20 @@ import {Menubar} from 'primereact/menubar';
 import {Button} from 'primereact/button';
 import { GlobalStore } from '../../stores/global-store/global-store';
 import { withRouter } from 'react-router-dom';
-import { loginRoute } from '../../shared/routes/routes';
+import { loginRoute, dashboardRoute, orderRoute, cartRoute } from '../../shared/routes/routes';
 
 const CustomHeader = ({history}) => {
 
     const {state, logout} = useContext(GlobalStore)
 
     const loggedInLinks = [
-        { label: 'Menu'},
-        { label: 'Order'},
-        { label: 'Cart' }
+        { label: 'Home', command: () => onClick('menu')},
+        { label: 'Order', command: () => onClick('order')},
+        { label: 'Cart', command: () => onClick('cart') }
     ]
 
     const loggedOutLinks = [
-        { label: 'Menu' },
+        { label: 'Home', command: () => onClick('menu') },
     ]
     const setItems = () => {
         if (state.isLoggedIn) return loggedInLinks;
@@ -29,10 +29,25 @@ const CustomHeader = ({history}) => {
     }
 
 
+    const onClick = (btnLabel) => {
+        switch(btnLabel) {
+            case 'menu':
+                history.push(dashboardRoute())
+                break;
+            case 'order':
+                history.push(orderRoute())
+                break;
+            case 'cart':
+                history.push(cartRoute())
+                break;
+            default: 
+                history.push(dashboardRoute())
+        }
+    }
 
     return(
         <>
-            <Menubar model={setItems()}>
+            <Menubar model={setItems()} >
                 {state.isLoggedIn 
                     ? <Button label="Logout" icon="pi pi-power-off" style={{marginLeft:4}} onClick={logout}/> 
                     : <Button label="Login" icon="pi pi-power-off" style={{marginLeft:4}} onClick={loggInRoute}/>}                
