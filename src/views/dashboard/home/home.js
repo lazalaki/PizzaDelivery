@@ -7,14 +7,14 @@ import './home.css'
 
 const Home = () => {
 
-    const {state} = useContext(GlobalStore);
+    const {state } = useContext(GlobalStore);
     
     return(
         <>
             <Row>
                 {state.food.map(singFood => {
                     return (
-                    <Col lg={4} md={4} xs={12} sm={12} className={'mg'}>
+                    <Col key={singFood.id} lg={4} md={4} xs={12} sm={12} className={'mg'}>
                         <FoodCard singleFood={singFood} key={singFood.id} />
                     </Col>);
                 })}

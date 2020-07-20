@@ -1,3 +1,9 @@
 export const SET_USER = 'SET_USER';
 export const SET_LOGGED_IN = 'SET_LOGGED_IN';
-export const SET_FOOD = 'SET_FOOD'
+export const SET_FOOD = 'SET_FOOD';
+export const SET_ORDERS = 'SET_ORDERS';
+export const CURRENCY_EUR  = 'EUR';
+export const CURRENCY_DOLLAR = 'USD';
+export const SET_CURRENCY = 'SET_CURRENCY';
+export const SET_CURRENT_ORDER = 'SET_CURRENT_ORDER';
+export const SET_TOAST = 'SET_TOAST';

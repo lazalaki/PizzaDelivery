@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -6,16 +6,19 @@ import { useFormik } from 'formik';
 import Input from '../../../componets/input/input'
 import { Button } from 'primereact/button'
 import { firstNamePlaceholder, lastNamePlaceholder, emailPlaceholder, passwordPlaceholder } from '../onboardingTranslation';
-import { registerRequest } from '../../../services/api/auth/auth';
+import { registerRequest } from '../../../services/api/auth/auth-service';
 import { loginRoute } from '../../../shared/routes/routes';
 import { registerFormValidation } from './registerFormValidation'
 import './register.css'
 import { Col, Row } from 'react-grid-system';
+import { GlobalStore } from '../../../stores/global-store/global-store';
 
 
 const Register = ({history}) => {
 
     const { t: translate} = useTranslation()
+
+    const {showSuccess, showError} = useContext(GlobalStore)
 
     const formik = useFormik({
         initialValues: {
@@ -31,11 +34,11 @@ const Register = ({history}) => {
     
     const onSubmitHandler = async () => {
         try {
-            console.log(formik.values)
             await registerRequest(formik.values)
+            showSuccess('You have successfully register')
             history.push(loginRoute())
         } catch(error) {
-            console.log(error)
+            showError(error.message)
         }
     }
 

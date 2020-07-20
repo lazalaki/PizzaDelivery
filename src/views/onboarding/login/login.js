@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Input from '../../../componets/input/input';
 import { emailPlaceholder, passwordPlaceholder } from '../onboardingTranslation';
-import { loginRequest } from '../../../services/api/auth/auth';
+import { loginRequest } from '../../../services/api/auth/auth-service';
 import { Button } from 'primereact/button';
 import { dashboardRoute, registerRoute } from '../../../shared/routes/routes';
 import { GlobalStore} from '../../../stores/global-store/global-store';
@@ -17,7 +17,7 @@ import { Row, Col } from 'react-grid-system';
 const Login = ({history}) => {
     const { t: translate } = useTranslation();
 
-    const {setUser} = useContext(GlobalStore);
+    const {setUser, showSuccess, showError} = useContext(GlobalStore);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -30,9 +30,10 @@ const Login = ({history}) => {
         try {
             const {data} = await loginRequest(formik.values)        
             setUser(data.user)
+            showSuccess('You have successfully logged in')
             history.push(dashboardRoute())
         } catch(error) {
-            console.log(error)
+            showError(error.message)
         }
     }
 

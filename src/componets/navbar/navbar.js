@@ -8,12 +8,14 @@ import { loginRoute, dashboardRoute, orderRoute, cartRoute } from '../../shared/
 
 const CustomHeader = ({history}) => {
 
-    const {state, logout} = useContext(GlobalStore)
+    const {state, logout, setEurAsCurrency, setDollarAsCurrency} = useContext(GlobalStore)
 
     const loggedInLinks = [
         { label: 'Home', command: () => onClick('menu')},
-        { label: 'Order', command: () => onClick('order')},
-        { label: 'Cart', command: () => onClick('cart') }
+        { label: 'Orders', command: () => onClick('order')},
+        { label: 'Cart', icon: 'pi pi-shopping-cart', command: () => onClick('cart') },
+        { label: 'EUR', command: () => onClick('eur')},
+        {label: 'USD', command: () => onClick('usd')}
     ]
 
     const loggedOutLinks = [
@@ -39,6 +41,12 @@ const CustomHeader = ({history}) => {
                 break;
             case 'cart':
                 history.push(cartRoute())
+                break;
+            case 'eur':
+                setEurAsCurrency();
+                break;
+            case 'usd':
+                setDollarAsCurrency()
                 break;
             default: 
                 history.push(dashboardRoute())
