@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "03bc9a901967060dc596d3c2f22185ae",
+    "revision": "b6376049921e6c5a276b03bd17bf5390",
     "url": "/PizzaDelivery/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PizzaDelivery/static/css/2.2a8a6f76.chunk.css"
   },
   {
-    "revision": "473f786cc5d7d592a2d5",
+    "revision": "ba8efcdd4a8806ae31af",
     "url": "/PizzaDelivery/static/css/main.43b3970f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PizzaDelivery/static/js/2.d4732cea.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "473f786cc5d7d592a2d5",
-    "url": "/PizzaDelivery/static/js/main.f64b6d8f.chunk.js"
+    "revision": "ba8efcdd4a8806ae31af",
+    "url": "/PizzaDelivery/static/js/main.40df2070.chunk.js"
   },
   {
     "revision": "e6645e43f0d76a289cfe",
