@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = () => 'http://localhost:8000/api'
+const baseUrl = () => 'https://pizza-delivery-novi-sad.herokuapp.com/api'
 
 export const post = (url, body) => axios.post(`${baseUrl()}${url}`, body);
 
