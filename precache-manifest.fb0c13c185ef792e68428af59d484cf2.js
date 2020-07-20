@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8fd30c4f5cdd9b80826b9dd58c5b2866",
+    "revision": "03bc9a901967060dc596d3c2f22185ae",
     "url": "/PizzaDelivery/index.html"
   },
   {
-    "revision": "e9e09bddaa6f44f2c674",
+    "revision": "d5779180311879f079b0",
     "url": "/PizzaDelivery/static/css/2.2a8a6f76.chunk.css"
   },
   {
-    "revision": "ffbfd12c20ea513581cf",
+    "revision": "473f786cc5d7d592a2d5",
     "url": "/PizzaDelivery/static/css/main.43b3970f.chunk.css"
   },
   {
-    "revision": "e9e09bddaa6f44f2c674",
-    "url": "/PizzaDelivery/static/js/2.a9ba06b1.chunk.js"
+    "revision": "d5779180311879f079b0",
+    "url": "/PizzaDelivery/static/js/2.d4732cea.chunk.js"
   },
   {
     "revision": "80231e00a1e8ff0d55f518c6b3d4fe7e",
-    "url": "/PizzaDelivery/static/js/2.a9ba06b1.chunk.js.LICENSE.txt"
+    "url": "/PizzaDelivery/static/js/2.d4732cea.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ffbfd12c20ea513581cf",
-    "url": "/PizzaDelivery/static/js/main.528b290f.chunk.js"
+    "revision": "473f786cc5d7d592a2d5",
+    "url": "/PizzaDelivery/static/js/main.f64b6d8f.chunk.js"
   },
   {
     "revision": "e6645e43f0d76a289cfe",
